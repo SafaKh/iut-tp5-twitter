@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tweet">
     <div >
      {{ tweet.auteur }}
     </div>
@@ -12,6 +12,6 @@
 <script>
 export default {
   name: 'tweet',
-  props : [tweet]
+  props: ['tweet']
 }
 </script>
