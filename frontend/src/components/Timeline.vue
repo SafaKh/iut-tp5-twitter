@@ -1,0 +1,32 @@
+<template>
+  <div class="timeline">
+    <ul >
+      <li v-for="tweet in tweets">{{ tweet.auteur }} : {{ tweet.contenu }} </li>
+    </ul>
+   </div>
+</template>
+
+<script>
+var tweet1 = {auteur: 'Safa', contenu: 'Salut'}
+var tweet2 = {auteur: 'test2', contenu: 'Salut'}
+var tweet3 = {auteur: 'test3', contenu: 'Salut'}
+export default {
+  name: 'timeline',
+  data () {
+    return {
+
+      tweets: [tweet1, tweet2, tweet3]
+    }
+  }
+}
+</script>
+<style scoped>
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: block;
+  margin: 0 10px;
+}
+</style>
