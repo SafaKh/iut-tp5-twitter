@@ -7,7 +7,10 @@
       {{ tweet.contenu }}
     </div>
     <div>
-      <ul ><li class="button"><icon name="reply"/></li> <li class="button"> <icon name="retweet"/></li> <li class="button"><icon name="heart"/></li> <li class="button"><icon name="envelope"/></li></ul>
+      <ul ><li class="button"><icon name="reply"/></li>
+      <li class="button"> <icon name="retweet"/>{{ nbretweet() }}</li>
+      <li class="button"><icon name="heart"/></li>
+      <li class="button"><icon name="envelope"/></li></ul>
     </div>
    </div>
 </template>
@@ -23,6 +26,9 @@ export default {
   methods: {
     moment: function (date) {
       return moment(date)
+    },
+    nbretweet: function () {
+      return this.tweet.retweeters.length
     }
   },
   created () {
