@@ -1,7 +1,7 @@
 <template>
   <div class="tweet">
     <div >
-     <strong>{{ tweet.auteur.nom}} {{ tweet.auteur.prenom}}</strong> <span class="handle">@{{ tweet.auteur.handle}}</span>
+     <strong>{{ tweet.auteur.nom}} {{ tweet.auteur.prenom}}</strong> <span class="handle">@{{ tweet.auteur.handle}} -{{moment(tweet.date).fromNow()}}</span>
     </div>
     <div>
       {{ tweet.contenu }}
@@ -14,11 +14,20 @@
 
 <script>
 import 'vue-awesome/icons'
+import moment from 'moment'
 import Icon from 'vue-awesome/components/Icon'
 export default {
   name: 'tweet',
   components: {Icon},
-  props: ['tweet']
+  props: ['tweet'],
+  methods: {
+    moment: function (date) {
+      return moment(date)
+    }
+  },
+  created () {
+    moment.locale('fr')
+  }
 }
 </script>
 <style scoped>
