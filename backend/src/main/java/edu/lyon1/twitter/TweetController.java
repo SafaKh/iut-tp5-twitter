@@ -28,14 +28,14 @@ public class TweetController {
     }
 
     @RequestMapping("/list")
-    public List<Tweet> list(@RequestParam(name = "auteur", required = false) Optional<String> auteur) {
+    public List<Tweet> list(@RequestParam(name = "auteur", required = false) Optional<Utilisateur> auteur) {
         return auteur
                 .map(a -> tweetRepository.findAllByAuteurOrderByDateDesc(a))
                 .orElseGet(() -> tweetRepository.findAllByOrderByDateDesc());
     }
 
     @RequestMapping("/tweet")
-    public void tweet(@RequestParam("auteur") String auteur, @RequestParam("contenu") String contenu) {
+    public void tweet(@RequestParam("auteur") Utilisateur auteur, @RequestParam("contenu") String contenu) {
         tweetRepository.save(new Tweet(contenu, auteur));
     }
 

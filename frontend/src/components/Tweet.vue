@@ -1,7 +1,7 @@
 <template>
   <div class="tweet">
     <div >
-     {{ tweet.auteur }}
+     {{ tweet.auteur.nom}} {{ tweet.auteur.prenom}} @{{ tweet.auteur.handle}}
     </div>
     <div>
       {{ tweet.contenu }}
