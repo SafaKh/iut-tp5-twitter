@@ -8,7 +8,7 @@
     </div>
     <div>
       <ul ><li class="button"><icon name="reply"/></li>
-      <li class="button"><a @click="retweet()"> <icon name="retweet"/>{{ nbretweet() }}</a></li>
+      <li class="button"><a v-if="peutRetweet()" @click="retweet()"> <icon name="retweet"/>{{ nbretweet() }}</a></li>
       <li class="button"><icon name="heart"/></li>
       <li class="button"><icon name="envelope"/></li></ul>
     </div>
@@ -32,6 +32,12 @@ export default {
     },
     nbretweet: function () {
       return this.tweet.retweeters.length
+    },
+    peutRetweet: function () {
+      var exist = this.tweet.retweeters.find(e => e.handle === this.userConnected)
+      var auteur = this.tweet.auteur.handle === this.userConnected
+      if (exist || auteur) return false
+      else return true
     },
     retweet: function () {
       this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: this.userConnected, tweet: this.tweet.id}, responseType: 'text'}).then(response => {
