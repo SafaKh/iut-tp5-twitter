@@ -28,11 +28,11 @@ export default {
   methods: {
     getUtilisateurs: function () {
       // GET /someUrl
-        this.$http.get('http://localhost:8080/utilisateurs').then(response => {
-          this.utilisateurs = response.body;
-        }, response => {
+      this.$http.get('http://localhost:8080/utilisateurs').then(response => {
+        this.utilisateurs = response.body
+      }, response => {
           // error callback
-        });
+      })
     }
   }
 }

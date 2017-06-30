@@ -1,6 +1,8 @@
 <template>
   <div class="timeline">
-      <feed :tweets="tweets" @retweeted="retweet" :loading="loading"/>
+        <utilisateurs></utilisateurs>
+        <feed :tweets="tweets" :loading="loading" @retweeted="retweet"></feed>
+
    </div>
 </template>
 
@@ -9,10 +11,11 @@ import Vue from 'vue'
 import Resource from 'vue-resource'
 Vue.use(Resource)
 import Feed from './Feed'
+import Utilisateurs from './Utilisateurs'
 export default {
 
   name: 'timeline',
-  components: {Feed},
+  components: {Feed, Utilisateurs},
   methods: {
     fetchTweets: function () {
       this.$http.get('http://localhost:8080/list').then(response => {
