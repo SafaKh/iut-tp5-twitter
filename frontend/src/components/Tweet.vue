@@ -8,7 +8,7 @@
     </div>
     <div>
       <ul ><li class="button"><icon name="reply"/></li>
-      <li class="button"><a v-if="peutRetweet()" @click="retweet()"> <icon name="retweet"/>{{ nbretweet() }}</a></li>
+      <li class="button"><a v-if="peutRetweet()" @click="retweet()"> <icon name="retweet"/>{{ nbretweet() }}</a><div v-else><icon name="retweet"/>{{ nbretweet() }}</div></li>
       <li class="button"><icon name="heart"/></li>
       <li class="button"><icon name="envelope"/></li></ul>
     </div>

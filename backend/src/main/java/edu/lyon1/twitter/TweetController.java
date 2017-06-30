@@ -6,8 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Timestamp;
 import java.util.List;
 import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static java.lang.System.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:8081")
@@ -35,8 +40,8 @@ public class TweetController {
     }
 
     @RequestMapping("/tweet")
-    public void tweet(@RequestParam("auteur") Utilisateur auteur, @RequestParam("contenu") String contenu) {
-        tweetRepository.save(new Tweet(contenu, auteur));
+    public Tweet tweet(@RequestParam("auteur") Utilisateur auteur, @RequestParam("contenu") String contenu) {
+        return tweetRepository.save(new Tweet(contenu, auteur));
     }
 
     @RequestMapping("/utilisateurs")

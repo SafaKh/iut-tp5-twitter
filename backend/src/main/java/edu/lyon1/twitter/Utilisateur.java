@@ -20,6 +20,11 @@ public class Utilisateur implements Serializable {
         this.nom = nom;
     }
 
+
+   @Override
+   public String toString() {
+      return this.prenom + ' ' + this.nom + ' ' + this.inscription + ' ' + this.handle;
+   }
     public Utilisateur() {
     }
 
