@@ -25,7 +25,7 @@ Vue.use(Resource)
 export default {
   name: 'tweet',
   components: {Icon},
-  props: ['tweet'],
+  props: ['tweet', 'userConnected'],
   methods: {
     moment: function (date) {
       return moment(date)
@@ -34,7 +34,7 @@ export default {
       return this.tweet.retweeters.length
     },
     retweet: function () {
-      this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: 'johndoe', tweet: this.tweet.id}, responseType: 'text'}).then(response => {
+      this.$http.get('http://localhost:8080/retweet', {params: {utilisateur: this.userConnected, tweet: this.tweet.id}, responseType: 'text'}).then(response => {
         this.tweets = response.body
         this.$emit('retweeted', this.tweet.id)
       }, response => {

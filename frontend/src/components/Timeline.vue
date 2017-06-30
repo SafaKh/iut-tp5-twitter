@@ -1,8 +1,8 @@
 <template>
   <div class="timeline">
-        <utilisateurs></utilisateurs>
-        <feed :tweets="tweets" :loading="loading" @retweeted="retweet"></feed>
-
+        <utilisateurs @changed="userChanged"></utilisateurs>
+        <feed :tweets="tweets" :loading="loading" :userConnected="handle" @retweeted="retweet"></feed>
+        {{handle}}
    </div>
 </template>
 
@@ -29,12 +29,16 @@ export default {
       var tweet = this.tweets.find(e => e.id === id)
       var handle = this.tweets.find(e => e.handle === handle)
       tweet.retweeters.push({handle: handle})
+    },
+    userChanged: function (handle) {
+      this.handle = handle
     }
   },
   data () {
     return {
       tweets: [],
-      loading: true
+      loading: true,
+      handle: ''
     }
   },
   created () {
