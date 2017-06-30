@@ -4,7 +4,7 @@
         <br>
         <PostTweet :connectedUser="handle" @newTweet="postTweet"></PostTweet>
         <br>
-        <feed :tweets="tweets" :loading="loading" :userConnected="handle" @retweeted="retweet"></feed>
+        <feed :tweets="sortedTweets" :loading="loading" :userConnected="handle" @retweeted="retweet"></feed>
    </div>
 </template>
 
@@ -55,6 +55,12 @@ export default {
       id: undefined
     }
   },
+  computed: {
+    sortedTweets: function () {
+      return this.tweets.sort((a, b) => a.date < b.date)
+    }
+  },
+
   created () {
     setTimeout(function () {
       this.fetchTweets()
