@@ -2,7 +2,6 @@
   <div class="timeline">
         <utilisateurs @changed="userChanged"></utilisateurs>
         <feed :tweets="tweets" :loading="loading" :userConnected="handle" @retweeted="retweet"></feed>
-        {{handle}}
    </div>
 </template>
 

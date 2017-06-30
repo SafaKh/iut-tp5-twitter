@@ -44,7 +44,7 @@ export default {
         this.tweets = response.body
         this.$emit('retweeted', this.tweet.id)
       }, response => {
-        console.log('error')
+
       })
     }
   },
