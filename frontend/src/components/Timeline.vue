@@ -1,6 +1,6 @@
 <template>
   <div class="timeline">
-      <feed :tweets="tweets" :loading="loading"/></li>
+      <feed :tweets="tweets" @retweeted="retweet" :loading="loading"/>
    </div>
 </template>
 
@@ -21,6 +21,11 @@ export default {
       }, response => {
         console.log('error')
       })
+    },
+    retweet: function (id) {
+      var tweet = this.tweets.find(e => e.id === id)
+      var handle = this.tweets.find(e => e.handle === handle)
+      tweet.retweeters.push({handle: handle})
     }
   },
   data () {
